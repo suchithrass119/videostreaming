@@ -70,7 +70,7 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
+      <a href="{{ URL::to('/') }}" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1 class="sitename">VStreem</h1>
@@ -106,7 +106,7 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="index.html#about">Sign In</a>
+      <a class="btn-getstarted" href="{{ URL::to('/') }}#about">Sign In</a>
 
     </div>
   </header>
@@ -117,15 +117,25 @@
     <section id="hero" class="hero section dark-background">
 
       <div class="container">
-        <div class="row gy-4">
+        <div class="row gy-4 ">
             @foreach($videos as $video)
             <div class="col-md-3 video-thumbnail position-relative">
-                <img src="{{ $video->url }}" alt="Video Thumbnail" class="img-fluid">
+                <img src="{{ $video->url }}" alt="Video Thumbnail" class="img-thumbnail img-fluid" style='height:400px !important'>
                 <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                     <h3 class="title text-white">Video Title</h3>
                     <a href="{{ url('video_details/' . $video->id) }}" class="btn btn-primary mt-3">Watch Now</a>
                 </div>
             </div>
+
+            <!-- insert into online.videos(title,url,main_url)values('Test Title','baners/1.jpg','baners/nnn.webm');
+            insert into online.videos(title,url,main_url)values('Test Title','baners/2.webp','baners/nnn.webm');
+            insert into online.videos(title,url,main_url)values('Test Title','baners/3.avif','baners/nnn.webm');
+            insert into online.videos(title,url,main_url)values('Test Title','baners/4.jpg','baners/nnn.webm');
+            insert into online.videos(title,url,main_url)values('Test Title','baners/5.jpg','baners/nnn.webm');
+            insert into online.videos(title,url,main_url)values('Test Title','baners/6.jpg','baners/nnn.webm');
+            insert into online.videos(title,url,main_url)values('Test Title','baners/7.avif','baners/nnn.webm');
+            insert into online.videos(title,url,main_url)values('Test Title','baners/8.png','baners/nnn.webm');
+            insert into online.videos(title,url,main_url)values('Test Title','baners/9.jpg','baners/nnn.webm'); -->
             
            @endforeach
            
