@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('online.videos', function (Blueprint $table) {
+        Schema::create('videos', function (Blueprint $table) {
             $table->id(); // Auto-incrementing primary key
             $table->string('title'); // Video title
             $table->text('description')->nullable(); // Optional description
@@ -23,7 +23,7 @@ return new class extends Migration
     
     public function down()
     {
-        Schema::dropIfExists('online.videos'); // Rollback
+        Schema::dropIfExists('videos'); // Rollback
     }
     
 };

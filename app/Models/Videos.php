@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Videos extends Model
 {
-    protected $table = "online.videos";
+    protected $table = "videos";
 }
