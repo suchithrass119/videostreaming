@@ -33,7 +33,10 @@
                         
                 </form>
                 <div class="col-md-12" align='right'>
-                    <input type="submit" class="btn btn-primary btn-block" value="Sign In" id="login" name="login">
+                    <input type="button" class="btn btn-primary btn-block" value="Sign In" id="login" name="login">
+                </div>
+                <div class="col-12">
+                      <p class="small mb-0">Don't have account? <a href="{{ URL::to('/user-create') }}">Create an account</a></p>
                 </div>
                 <br>
                 <br>
@@ -43,7 +46,7 @@
             
           </div>
 
-          <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-xl-6 imgviewdiv" data-aos="fade-up" data-aos-delay="300">
             <div class="image-wrapper">
               <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
                 <img src="{{ asset('assets/img/Keltron_house.png') }}" alt="Business Meeting" class="img-fluid main-image rounded-4">

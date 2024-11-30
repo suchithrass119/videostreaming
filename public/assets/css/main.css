@@ -1972,3 +1972,16 @@ section,
     transform: translateY(0);
   }
 }
+
+
+@media (max-width: 1199px) {
+  .imgviewdiv
+  {
+    display: none;
+  }
+}
+
+.row
+{
+  padding-bottom: 15px;
+}
