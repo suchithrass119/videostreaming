@@ -38,11 +38,8 @@ class PublicSecurity
         }
 
 
-        $response = $next($request);
-        return $response
-            ->header('Access-Control-Allow-Origin', $request->headers->get('Origin') ?: '*')
-            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-            ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+       return $response = $next($request);
+        
 
     }
 
