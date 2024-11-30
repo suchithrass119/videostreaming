@@ -8,6 +8,8 @@
     <title>Forms / Layouts - NiceAdmin Bootstrap Template</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <!-- Favicons -->
     <link href="{{asset('admin/assets/img/favicon.png')}}" rel="icon">
@@ -178,6 +180,12 @@
                     <li>
                         <a href="{{ URL::to('/admin-user-create') }}" class="active">
                             <i class="bi bi-circle"></i><span>User Management</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ URL::to('/video-create') }}" class="active">
+                            <i class="bi bi-circle"></i><span>Video Management</span>
                         </a>
                     </li>
                    
