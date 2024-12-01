@@ -67,7 +67,7 @@ class PublicSecurity
             $parameter = str_replace("*/", "", $parameter);
             $parameter = str_replace("=", "", $parameter);
             $parameter = htmlentities($parameter);
-            $parameter = pg_escape_string($parameter); // Use appropriate escaping method depending on your DB
+            // $parameter = pg_escape_string($parameter); // Use appropriate escaping method depending on your DB
             $parameter = trim($parameter);
     
             // Additional replacements, if necessary

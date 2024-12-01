@@ -32,6 +32,8 @@ class AdminVideoManager extends Controller
             'description' => $request->Description,
         ]);
 
-       return json_encode($video->id);
+       return json_encode([
+        'success'=>true
+       ]);
     }
 }

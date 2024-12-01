@@ -1822,6 +1822,7 @@ section,
   overflow: hidden;
   border-radius: 8px; /* Optional: rounded corners */
   
+  
 }
 
 .video-thumbnail img {
@@ -1831,7 +1832,7 @@ section,
 }
 
 .video-thumbnail .overlay {
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  background-color: rgba(0, 0, 0, 0.5);  
   opacity: 0; /* Hidden by default */
   transition: opacity 0.3s ease-in-out;
   text-align: center;
@@ -1985,4 +1986,9 @@ section,
 .row
 {
   padding-bottom: 15px;
+}
+
+.text-white
+{
+  text-transform: capitalize;
 }
