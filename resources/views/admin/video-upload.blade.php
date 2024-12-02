@@ -82,7 +82,7 @@
         
         // Make AJAX request
         $.ajax({
-            url: '{{ route('upload.video') }}',  // Route to handle the video upload (adjust route name)
+            url: APP_URL + "/video-upload",
             type: 'POST',
             dataType: 'json',
             data: formData, // Send form data including files
