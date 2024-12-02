@@ -10,14 +10,12 @@ class VideoManager extends Controller
 {
     public function index()
     {
-        $baseurl=asset("/");
         $videos = videos::paginate(8); // Fetch 12 items per page
-       return view('list',compact('videos','baseurl')) ;
+       return view('list',compact('videos')) ;
     }
     public function  VideoDetails(string $id) 
     {
         $video = videos::find($id); // Fetch 12 items per page
-        $baseurl=asset("/");
-        return view('single-video-details',compact('video','baseurl')) ;
+        return view('single-video-details',compact('video')) ;
     }
 }
