@@ -24,6 +24,11 @@ class VideoManager extends Controller
     public function fetchVideos(Request $request)
     {
         $videos = videos::orderBy('created_at', 'desc')->paginate(10); // 10 videos per page
+        $videos->getCollection()->transform(function ($video) {
+            $video->url = asset("storage/{$video->url}");
+            $video->main_url = asset("storage/{$video->main_url}"); // Optional: For thumbnails
+            return $video;
+        });
         return response()->json($videos);
     }
 
