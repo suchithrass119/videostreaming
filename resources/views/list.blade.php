@@ -24,7 +24,7 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
 
-      <!-- <div class="container">
+      <div class="container">
         
         <div class="row gy-4 ">
             @foreach($videos as $video)
@@ -50,18 +50,17 @@
         {{ $videos->links() }}
         </div>
         
-      </div> -->
-
+      </div>
+<!-- 
       <div class="container mt-4">
     <h2 class="mb-4">Videos</h2>
     <div id="video-container" class="row g-4">
-        <!-- Videos will be dynamically loaded here -->
     </div>
     <div id="loading" class="text-center mt-4" style="display: none;">
         <p>Loading...</p>
     </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
+</div> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
@@ -115,7 +114,7 @@
             }
         });
     });
-</script>
+</script> -->
 
 
     </section><!-- /Hero Section -->
