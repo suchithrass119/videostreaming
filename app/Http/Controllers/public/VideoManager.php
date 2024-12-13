@@ -20,4 +20,11 @@ class VideoManager extends Controller
         $video = videos::find($id); // Fetch 12 items per page
         return view('single-video-details',compact('video')) ;
     }
+    // VideoController.php
+    public function fetchVideos(Request $request)
+    {
+        $videos = videos::orderBy('created_at', 'desc')->paginate(10); // 10 videos per page
+        return response()->json($videos);
+    }
+
 }

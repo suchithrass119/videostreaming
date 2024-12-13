@@ -15,6 +15,8 @@ Route::middleware([PublicSecurity::class])->group(function () {
     Route::get('/video_details/{id}',  [VideoManager::class, 'VideoDetails']);
     Route::get('/login',  [LoginManager::class, 'index'])->name('login');
     Route::get('/user-create',  [UserController::class, 'index']);
+    Route::get('/videos', [VideoController::class, 'fetchVideos']);
+
 
 });
 
