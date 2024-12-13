@@ -53,9 +53,9 @@
       </div> -->
 
       <div class="container mt-4">
-    <h2 class="text-center">Videos</h2>
-    <div id="video-container"class="row gy-4 ">
-        <!-- Videos will be dynamically appended here -->
+    <h2 class="mb-4">Videos</h2>
+    <div id="video-container" class="row g-4">
+        <!-- Videos will be dynamically loaded here -->
     </div>
     <div id="loading" class="text-center mt-4" style="display: none;">
         <p>Loading...</p>
@@ -74,21 +74,22 @@
         isLoading = true;
         $('#loading').show();
 
-        $.get( APP_URL +'/videos?page=${page}', function (data) {
+        $.get(APP_URL +'/videos?page=${page}', function (data) {
             data.data.forEach(video => {
                 $('#video-container').append(`
-                    <div class="card">
-                        <img 
-                            class="lazyload" 
-                            data-src="${video.url}" 
-                            alt="${video.title}" 
-                        />
-                        <div class="card-body">
-                            <h5 class="card-title">${video.title}</h5>
-                            <video controls preload="none" width="100%">
-                                <source src="${video.main_url}" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <a href="${video.main_url}" target="_blank">
+                                <img 
+                                    src="${video.url}" 
+                                    alt="${video.title}" 
+                                    class="card-img-top"
+                                />
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">${video.title}</h5>
+                                <p class="card-text">${video.description || ''}</p>
+                            </div>
                         </div>
                     </div>
                 `);
