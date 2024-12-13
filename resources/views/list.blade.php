@@ -74,7 +74,7 @@
         isLoading = true;
         $('#loading').show();
 
-        $.get('/videos?page=${page}', function (data) {
+        $.get( APP_URL +'/videos?page=${page}', function (data) {
             data.data.forEach(video => {
                 $('#video-container').append(`
                     <div class="card">
