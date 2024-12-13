@@ -54,7 +54,7 @@
 
       <div class="container mt-4">
     <h2 class="text-center">Videos</h2>
-    <div id="video-container row gy-4">
+    <div id="video-container"class="row gy-4 ">
         <!-- Videos will be dynamically appended here -->
     </div>
     <div id="loading" class="text-center mt-4" style="display: none;">
