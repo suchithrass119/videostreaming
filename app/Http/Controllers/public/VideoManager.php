@@ -10,8 +10,10 @@ class VideoManager extends Controller
 {
     public function index()
     {
-        $videos = videos::paginate(8); // Fetch 12 items per page
-       return view('list',compact('videos')) ;
+    //     $videos = videos::paginate(8); // Fetch 12 items per page
+    //    return view('list',compact('videos')) ;
+        $videos = videos::orderBy('created_at', 'desc')->paginate(10); // 10 videos per page
+        return response()->json($videos);
     }
     public function  VideoDetails(string $id) 
     {
