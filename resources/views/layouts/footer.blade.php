@@ -37,6 +37,9 @@
   <!-- Main JS File -->
   <script src="{{ asset('assets/js/main.js')}}"></script>
   <script src="https://cdn.vidstack.io/player" type="module"></script>
+
+  <script src="{{asset('jquery/jquery.min.js')}}"></script>
+
 </body>
 
 </html>
