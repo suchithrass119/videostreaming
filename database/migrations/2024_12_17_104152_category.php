@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('adminusers', function (Blueprint $table) {
+        Schema::create('category', function (Blueprint $table) {
             $table->id(); // Auto-incrementing primary key
-            $table->string('username')->unique(); // Video title
-            $table->text('name')->nullable(); // Optional description
-            $table->string('password'); // Trailer Video URL
-            $table->integer('user_status'); // Main Video  URL
-            $table->string('mob_number')->unique(); // Trailer Video URL
+            $table->string('title')->unique(); // Video title
             $table->string('picpath'); // Trailer Video URL
+            $table->integer('status'); // Main Video  URL
             $table->timestamps(); // Created_at and updated_at timestamps
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('adminusers'); // Rollback
+        Schema::dropIfExists('category'); // Rollback
     }
 };

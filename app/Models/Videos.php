@@ -12,5 +12,6 @@ class Videos extends Model
         'description',   // Include other fields if necessary
         'url',
         'main_url',
+        'category_id',
     ];
 }

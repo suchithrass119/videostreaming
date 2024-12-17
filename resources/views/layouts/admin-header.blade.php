@@ -157,7 +157,7 @@ $adminuser=AdminUser::where('id',$currentuser)->first();
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="{{ asset('storage/' . $adminuser->picpath) }}" alt="Profile" class="rounded-circle">
+                        <img src="{{ asset('storage/' . $adminuser->picpath) }}" alt="" class="rounded-circle">
                         <span class="d-none d-md-block dropdown-toggle ps-2">{{ $adminuser->name }}</span>
                     </a><!-- End Profile Iamge Icon -->
 
@@ -191,13 +191,18 @@ $adminuser=AdminUser::where('id',$currentuser)->first();
                 <ul id="forms-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
                    
                     <li>
-                        <a href="{{ URL::to('/admin-user-create') }}" class="active">
+                        <a href="{{ URL::to('/admin-user-create') }}" >
                             <i class="bi bi-circle"></i><span>User Management</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ URL::to('/video-category') }}" >
+                            <i class="bi bi-circle"></i><span>Add Video Category</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="{{ URL::to('/video-create') }}" class="active">
+                        <a href="{{ URL::to('/video-create') }}" >
                             <i class="bi bi-circle"></i><span>Video Management</span>
                         </a>
                     </li>

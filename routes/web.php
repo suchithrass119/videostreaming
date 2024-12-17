@@ -30,4 +30,7 @@ Route::middleware([Adminsecurity::class])->group(function () {
     Route::post('/create-user', [AdminUserController::class, 'UserCreation']);
     Route::get('/admin/logout', [AdminUserController::class, 'logout']);
     
+    Route::get('/video-category', [AdminVideoManager::class, 'VideoCat']);
+    Route::post('/category-upload', [AdminVideoManager::class, 'CatCreation']);
+    
 });

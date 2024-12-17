@@ -155,13 +155,24 @@
 
                                 <!-- Video Player (hidden initially) -->
                                 <media-player title="Sprite Fight" src="{{ asset('storage/' . $video->main_url) }}" class="video-trailer">
-                                    <media-provider></media-provider>
+                                    <media-provider playsinline></media-provider>
                                     <media-video-layout></media-video-layout>
                                 </media-player>
 
-                                <div class="card-body">
+                                <!-- <div class="card-body">
                                     <h5 class="card-title text-white">{{ $video->title }}</h5>
                                     <p class="card-text">Channel Name · 1M views</p>
+                                </div> -->
+
+                                <div class="card-body d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <img src="{{ asset('storage/Propic/FUPVrrMQ63N3bxhRVXiM5BvfBWIKG8H2P8KOSlri.png' ) }}" alt="Image" class="img-fluid rounded-circle" style="width: 50px; height: auto;">
+                                    </div>
+                                    <div>
+                                        <h5 class="card-title text-white">{{ $video->title }}</h5>
+                                        <p class="card-text">Channel Name · 1M views</p>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </a>

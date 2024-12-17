@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title'); // Video title
             $table->text('description')->nullable(); // Optional description
             $table->string('url'); // Trailer Video URL
+            $table->integer('category_id'); // Trailer Video URL
             $table->string('main_url'); // Main Video  URL
             $table->timestamps(); // Created_at and updated_at timestamps
         });
