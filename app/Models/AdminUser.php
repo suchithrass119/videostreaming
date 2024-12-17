@@ -13,5 +13,6 @@ class AdminUser extends Model
         'password',
         'user_status',
         'mob_number',
+        'picpath'
     ];
 }

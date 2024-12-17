@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Helpers;
+
 class CommonFunctions
 {
 

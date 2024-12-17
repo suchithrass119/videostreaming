@@ -9,6 +9,7 @@ use Elegant\Sanitizer\Sanitizer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -143,16 +144,19 @@ class AdminUserController extends Controller
             $key = "_vstream";
             // $data['password'] = md5($data['password'] . $key);
             $file = $request->file('propic');
+            // dd($file);
 
             if ($helper->isMaliciousFile($file)) {
                 return response()->json(['error' => 'The uploaded file is not allowed.'], 422);
             }
 
             $picpath = $request->file('propic')->store('Propic', 'public');
+            // dd($picpath);
             $password=$data['password'].$key;
             $hashedPassword = Hash::make($password);
             $data['password'] =$hashedPassword;
             $data['picpath'] =$picpath;
+            // dd($data);
 
             $usersave = AdminUser::create($data);
             if ($usersave->id) {
@@ -168,5 +172,12 @@ class AdminUserController extends Controller
                 'success'=>true
             ]);
         }
+    }
+
+    public function logout()
+    {
+        // $this->save_logout_history();
+        Session::flush();
+        return Redirect::to('/adminlogin');
     }
 }
