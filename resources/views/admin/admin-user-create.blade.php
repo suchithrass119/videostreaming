@@ -14,68 +14,65 @@
         <section class="section">
             <div class="row">
                 <div class="col-lg-12">
-
+                    
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">New User Regitration Form</h5>
 
                             <!-- Floating Labels Form -->
-                            <form class="row g-3">
-                                <div class="col-md-12">
+                            <form class="row g-3" method="post" id="userform" name="userform" enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="floatingName"
-                                            placeholder="Your Name">
-                                        <label for="floatingName">Your Name</label>
+                                        <input type="text" class="form-control" id="name" name="name"   placeholder="Your Name">
+                                        <label for="name">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="floatingEmail"
-                                            placeholder="Your Email">
-                                        <label for="floatingEmail">Your Email</label>
+                                        <input type="text" class="form-control" id="mob_number" name="mob_number"   placeholder="Your Mobile">
+                                        <label for="mob_number">Your Mobile</label>
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="file" class="form-control" id="propic"  placeholder="Your Profile Pic" name="propic">
+                                        <label for="propic">Your Profile Pic</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="password" class="form-control" id="floatingPassword"
-                                            placeholder="Password">
-                                        <label for="floatingPassword">Password</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Address" id="floatingTextarea"
-                                            style="height: 100px;"></textarea>
-                                        <label for="floatingTextarea">Address</label>
+                                        <input type="text" class="form-control" id="username"  placeholder="Your Username" name="username">
+                                        <label for="username">Your Username</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="col-md-12">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="floatingCity"
-                                                placeholder="City">
-                                            <label for="floatingCity">City</label>
-                                        </div>
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                        <label for="password">Password</label>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-floating mb-3">
-                                        <select class="form-select" id="floatingSelect" aria-label="State">
-                                            <option selected>New York</option>
-                                            <option value="1">Oregon</option>
-                                            <option value="2">DC</option>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Password">
+                                        <label for="cpassword">Confirm Password</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-control" id="userstatus" name="userstatus" placeholder="User Status">
+                                            <option value="1">Active</option>
+                                            <option value="2">In-Active</option>
                                         </select>
-                                        <label for="floatingSelect">State</label>
+                                        <label for="userstatus">User Status</label>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="floatingZip" placeholder="Zip">
-                                        <label for="floatingZip">Zip</label>
-                                    </div>
-                                </div>
+                                
+                                
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="button" class="btn btn-primary" onclick="user_create();">Submit</button>
                                     <button type="reset" class="btn btn-secondary">Reset</button>
                                 </div>
                             </form><!-- End floating Labels Form -->
@@ -92,4 +89,34 @@
     </main><!-- End #main -->
 
 @include('layouts.admin-footer')
+<script>
    
+   function user_create() {
+        const form = document.getElementById('userform');
+        const formData = new FormData(form); // Collect form data, including files
+        var csrfToken = $('[name="_token"]').val();
+        formData.append('_token', csrfToken);
+       
+       // Make AJAX request
+       $.ajax({
+            url: APP_URL + "/create-user",
+            type: 'POST',
+            dataType: 'json',
+            data: formData, 
+            processData: false, // Prevent jQuery from processing the data
+            contentType: false,
+           success: function(response) {
+               if (response.success) {
+                   alert('User Created successfully!');
+                   $('#userform')[0].reset();  // Reset the form
+               } else {
+                   alert('User Creation failed: ' + response.message);
+               }
+           },
+           error: function(xhr, status, error) {
+               alert('An error occurred: ' + error);
+           }
+       });
+   }
+
+</script>

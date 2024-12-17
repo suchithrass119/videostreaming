@@ -27,5 +27,6 @@ Route::middleware([Adminsecurity::class])->group(function () {
     Route::get('/admin-user-create',  [AdminUserController::class, 'index']);
     Route::get('/video-create',  [AdminVideoManager::class, 'index']);
     Route::post('/video-upload', [AdminVideoManager::class, 'uploadVideo'])->name('upload.video');
+    Route::post('/create-user', [AdminUserController::class, 'UserCreation']);
 
 });

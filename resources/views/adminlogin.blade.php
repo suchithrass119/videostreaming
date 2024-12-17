@@ -82,7 +82,29 @@ function getLogin()
         dataType: "json",
         data: { 'username': $("#username").val(), 'password': $("#password").val(),  "_token":'{{ csrf_token() }}' },
         success: function (data) {
-          
+          if ($.trim(data.message) == 'valid') {
+            if ($.trim(data.status) == '1') {
+            window.location.href = APP_URL + '/video-create';
+            } else {
+              $("#error_msg").html("ACCESS DENIED");
+            }
+          } else if ($.trim(data.message) == 'invalid') {
+            var msg = '';
+            if (data.error.msg) {
+              createalert(data.error.msg,'warning','error_msg');
+            } else if (data.error.msg_active) {
+              alert(data.error.msg_active);
+              location.reload();
+            } else {
+              if (data.error.username)
+                msg += data.error.username + '<br>';
+              if (data.error.password)
+                msg += data.error.password + '<br>';
+              if (data.error.captcha)
+                msg += data.error.captcha;
+              createalert(msg,'warning','error_msg');
+            }
+          }
         }
       });
 }

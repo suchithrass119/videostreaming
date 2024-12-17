@@ -42,7 +42,7 @@ class Adminsecurity
 
         $data = $request->session()->all();
         $currentuser = Session::get('userid');
-        // if (!$currentuser) { return to_route('login');  }
+        if (!$currentuser) { return to_route('adminlogin');  }
 
         return $response = $next($request);
 
