@@ -12,4 +12,8 @@ class Category extends Model
         'picpath',   // Include other fields if necessary
         'status',
     ];
+    public function videos()
+    {
+        return $this->hasMany(Videos::class);
+    }
 }

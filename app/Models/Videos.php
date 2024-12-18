@@ -14,4 +14,8 @@ class Videos extends Model
         'main_url',
         'category_id',
     ];
+    public function category()
+    {
+        return $this->belongsTo(Category::class); // Assuming 'category_id' is the foreign key
+    }
 }
