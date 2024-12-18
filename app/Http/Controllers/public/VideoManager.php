@@ -12,7 +12,7 @@ class VideoManager extends Controller
     {
     //     $videos = videos::paginate(8); // Fetch 12 items per page
     //    return view('list',compact('videos')) ;
-        $videos = videos::with('category')->orderBy('created_at', 'desc')->paginate(3); // 10 videos per page
+        $videos = Videos::with('category')->orderBy('created_at', 'desc')->paginate(3); // 10 videos per page
 
         if ($request->ajax()) {
             $data=response()->json([
@@ -27,10 +27,26 @@ class VideoManager extends Controller
             return view('list',compact('videos')) ;
         }
     }
-    public function  VideoDetails(string $id) 
+    public function  VideoDetails(string $id,Request $request) 
     {
-        $video = videos::find($id); // Fetch 12 items per page
-        return view('single-video-details',compact('video')) ;
+        $video = Videos::find($id); // Fetch 12 items per page
+
+        $videos = Videos::with('category')->where('category_id',$video->category_id)->where('id',"!=",$id)->orderBy('created_at', 'desc')->paginate(2); // 10 videos per page
+
+        if ($request->ajax()) {
+
+            $data=response()->json([
+                'videos' => $videos->items(),
+                'next_page_url' => $videos->nextPageUrl(),
+            ]);
+
+            return $data;
+        }
+        else
+        {
+            return view('single-video-details',compact('video','videos')) ;
+        }
+
     }
     // VideoController.php
     
