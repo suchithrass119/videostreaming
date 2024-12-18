@@ -27,9 +27,9 @@
   <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="{{ asset('assets/css/main.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.vidstack.io/player/theme.css" />
   <link rel="stylesheet" href="https://cdn.vidstack.io/player/video.css" />
+  <link href="{{ asset('assets/css/main.css')}}" rel="stylesheet">
   
 </head>
 
