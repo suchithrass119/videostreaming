@@ -68,6 +68,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Suggestions for using this project
 
-use postgres
-use php artisan migrate -- for db migration
-use composer require elegantweb/sanitizer -- for sanitizer
+- **[use postgres]**
+- **[use php artisan migrate -- for db migration]**
+- **[use composer require elegantweb/sanitizer -- for sanitizer]**
+
