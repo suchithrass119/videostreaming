@@ -45,10 +45,10 @@
           </div>
 
           <div class="col-xl-6 imgviewdiv" data-aos="fade-up" data-aos-delay="300">
-            <div class="image-wrapper">
+            <div class="image-wrapper animated">
               <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
-                <img src="{{ asset('assets/img/Keltron_house.png') }}" alt="Business Meeting" class="img-fluid main-image rounded-4">
-                <img src="{{ asset('assets/img/img.jpeg')}}" alt="Team Discussion" class="img-fluid small-image rounded-4">
+                <img src="{{ asset('assets/img/login.avif') }}" alt="Business Meeting" class="img-fluid main-image rounded-4">
+                <img src="{{ asset('assets/img/signin.jpg')}}" alt="Team Discussion" class="img-fluid small-image rounded-4">
               </div>
               <!-- <div class="experience-badge floating">
                 <h3>50+ <span>Years</span></h3>

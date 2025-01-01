@@ -13,11 +13,15 @@ Route::middleware([PublicSecurity::class])->group(function () {
    
     Route::get('/',  [VideoManager::class, 'index'])->name('stream.video');
     Route::get('/video_details/{id}',  [VideoManager::class, 'VideoDetails']);
-    Route::get('/login',  [LoginManager::class, 'index'])->name('login');
+    Route::get('/login',  [UserController::class, 'login'])->name('login');
     Route::get('/user-create',  [UserController::class, 'index']);
     Route::get('/adminlogin',  [AdminUserController::class, 'LoginAdmin']);
     Route::post('/admin/getLogin',  [AdminUserController::class, 'getLogin']);
+    Route::post('/user/createuser',  [UserController::class, 'UserAdd']);
+    Route::post('/user/getLoginUser',  [UserController::class, 'UserLogin']);
 
+
+    
 
 });
 

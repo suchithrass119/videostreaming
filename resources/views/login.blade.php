@@ -33,11 +33,13 @@
                         
                 </form>
                 <div class="col-md-12" align='right'>
-                    <input type="button" class="btn btn-primary btn-block" value="Sign In" id="login" name="login">
+                    <input type="button" class="btn btn-primary btn-block" value="Sign In" id="login" name="login" onclick="getLoginUser();">
                 </div>
                 <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="{{ URL::to('/user-create') }}">Create an account</a></p>
+                      <p class="small mb-0">Are you a admin? <a href="{{ URL::to('/adminlogin') }}">Click Me</a></p>
                 </div>
+
                 <br>
                 <br>
             </div>
@@ -47,10 +49,10 @@
           </div>
 
           <div class="col-xl-6 imgviewdiv" data-aos="fade-up" data-aos-delay="300">
-            <div class="image-wrapper">
+            <div class="image-wrapper animated">
               <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
-                <img src="{{ asset('assets/img/Keltron_house.png') }}" alt="Business Meeting" class="img-fluid main-image rounded-4">
-                <img src="{{ asset('assets/img/img.jpeg')}}" alt="Team Discussion" class="img-fluid small-image rounded-4">
+                <img src="{{ asset('assets/img/login.avif') }}" alt="Business Meeting" class="img-fluid main-image rounded-4">
+                <img src="{{ asset('assets/img/signin.jpg')}}" alt="Team Discussion" class="img-fluid small-image rounded-4">
               </div>
               <!-- <div class="experience-badge floating">
                 <h3>50+ <span>Years</span></h3>
@@ -74,3 +76,40 @@
     </main>
 
 @include('layouts.footer')
+
+<script>
+function getLoginUser()
+{
+  $.ajax({
+        url: APP_URL + '/admin/getLogin',
+        type: 'post',
+        dataType: "json",
+        data: { 'username': $("#username").val(), 'password': $("#password").val(),  "_token":'{{ csrf_token() }}' },
+        success: function (data) {
+          if ($.trim(data.message) == 'valid') {
+            if ($.trim(data.status) == '1') {
+            window.location.href = APP_URL + '/video-create';
+            } else {
+              $("#error_msg").html("ACCESS DENIED");
+            }
+          } else if ($.trim(data.message) == 'invalid') {
+            var msg = '';
+            if (data.error.msg) {
+              createalert(data.error.msg,'warning','error_msg');
+            } else if (data.error.msg_active) {
+              alert(data.error.msg_active);
+              location.reload();
+            } else {
+              if (data.error.username)
+                msg += data.error.username + '<br>';
+              if (data.error.password)
+                msg += data.error.password + '<br>';
+              if (data.error.captcha)
+                msg += data.error.captcha;
+              createalert(msg,'warning','error_msg');
+            }
+          }
+        }
+      });
+}
+</script>

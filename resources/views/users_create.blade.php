@@ -19,7 +19,7 @@
                     <p class="about-description"></p>
 
                     <div class="row feature-list-wrapper">
-                        <form method="post">
+                        <form method="post" id='fromdata'>
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -61,16 +61,15 @@
                                 
                             <div class="col-12">
                                 <div class="form-check">
-                                    <input class="form-check-input" name="terms" type="checkbox" value=""
-                                        id="acceptTerms" required="">
+                                    <input class="form-check-input" name="acceptTerms" type="checkbox" value=""
+                                        id="acceptTerms" required="" onclick="terms();">
                                     <label class="form-check-label" for="acceptTerms">I agree and accept the <a
                                             href="{{ URL::to('/terms') }}">terms and conditions</a></label>
                                     <div class="invalid-feedback">You must agree before submitting.</div>
                                 </div>
                             </div>
                             <div class="col-md-12" align='right'>
-                                <input type="button" class="btn btn-primary btn-block" value="Sign Up" id="login"
-                                    name="login">
+                                <input type="button" class="btn btn-primary btn-block" value="Sign Up" id="login" name="login" onclick="UserCreation();" disabled>
                             </div>
                             <div class="col-12">
                                 <p class="small mb-0">Already have an account? <a href="{{ URL::to('/login') }}">Log
@@ -85,12 +84,10 @@
                 </div>
 
                 <div class="col-xl-6 imgviewdiv" data-aos="fade-up" data-aos-delay="300">
-                    <div class="image-wrapper">
+                    <div class="image-wrapper animated">
                         <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
-                            <img src="{{ asset('assets/img/Keltron_house.png') }}" alt="Business Meeting"
-                                class="img-fluid main-image rounded-4">
-                            <img src="{{ asset('assets/img/img.jpeg')}}" alt="Team Discussion"
-                                class="img-fluid small-image rounded-4">
+                            <img src="{{ asset('assets/img/login.avif') }}" alt="Business Meeting" class="img-fluid main-image rounded-4">
+                            <img src="{{ asset('assets/img/signin.jpg')}}" alt="Team Discussion" class="img-fluid small-image rounded-4">
                         </div>
                         <!-- <div class="experience-badge floating">
                 <h3>50+ <span>Years</span></h3>
@@ -114,3 +111,36 @@
 </main>
 
 @include('layouts.footer')
+
+<script>
+function UserCreation()
+{
+  $.ajax({
+        url: APP_URL + '/user/createuser',
+        type: 'post',
+        dataType: "json",
+        data: $("#fromdata").serialize(),
+        success: function (response) {
+            if (response.success) {
+                alert('User Created successfully!');
+                $('#fromdata')[0].reset();  // Reset the form
+                window.location.href = APP_URL + '/login';
+
+            } else {
+                alert('User Creation failed: ' + response.message);
+            }
+        }
+      });
+}
+
+function terms()
+{
+    if ($('#acceptTerms').is(':checked'))
+    {
+        $("#login").prop('disabled',false);
+    }
+    else{
+        $("#login").prop('disabled',true);
+    }
+}
+</script>
