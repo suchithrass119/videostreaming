@@ -31,20 +31,23 @@ class VideoManager extends Controller
     {
         $video = Videos::find($id); // Fetch 12 items per page
 
-        $videos = Videos::with('category')->where('category_id',$video->category_id)->where('id',"!=",$id)->orderBy('created_at', 'desc')->paginate(2); // 10 videos per page
+        $videos = Videos::with('category')->where('id',"!=",$id)->orderBy('created_at', 'desc')->paginate(2); // 10 videos per page
+        $videoscat = Videos::with('category')->where('category_id',$video->category_id)->where('id',"!=",$id)->orderBy('created_at', 'desc')->paginate(2); // 10 videos per page
 
         if ($request->ajax()) {
 
             $data=response()->json([
                 'videos' => $videos->items(),
                 'next_page_url' => $videos->nextPageUrl(),
+                'videoscat' => $videoscat->items(),
+                'next_page_url_cat' => $videoscat->nextPageUrl(),
             ]);
 
             return $data;
         }
         else
         {
-            return view('single-video-details',compact('video','videos')) ;
+            return view('single-video-details',compact('video','videos','videoscat')) ;
         }
 
     }
